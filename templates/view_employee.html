@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card shadow">
+      <div class="card-header bg-info text-white d-flex justify-content-between">
+        <h5 class="mb-0"><i class="fas fa-id-card me-2"></i>Employee Profile</h5>
+        <span class="badge bg-{{ 'success' if employee.status == 'Active' else 'secondary' }} fs-6">
+          {{ employee.status }}
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless">
+          <tr><th width="40%">Name</th>       <td>{{ employee.name }}</td></tr>
+          <tr><th>Email</th>                  <td>{{ employee.email }}</td></tr>
+          <tr><th>Phone</th>                  <td>{{ employee.phone }}</td></tr>
+          <tr><th>Department</th>             <td>{{ employee.department }}</td></tr>
+          <tr><th>Position</th>               <td>{{ employee.position }}</td></tr>
+          <tr><th>Salary</th>                 <td>₹{{ "{:,.0f}".format(employee.salary) }}</td></tr>
+          <tr><th>Hire Date</th>              <td>{{ employee.hire_date }}</td></tr>
+          <tr><th>Record Created</th>         <td>{{ employee.created_at }}</td></tr>
+        </table>
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <a href="/edit/{{ employee.id }}" class="btn btn-warning">
+          <i class="fas fa-edit me-1"></i>Edit
+        </a>
+        <a href="/" class="btn btn-secondary">
+          <i class="fas fa-arrow-left me-1"></i>Back
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+body { background-color: #f8f9fa; }
+
+.navbar-brand { font-size: 1.4rem; letter-spacing: 1px; }
+
+.table th { background-color: #e9ecef; }
+
+.card { border-radius: 10px; }
+
+.btn { border-radius: 6px; }
+
+/* Badge colors */
+.badge.bg-success { font-size: 0.8rem; }

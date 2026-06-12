@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-warning">
+        <h5 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Employee — {{ employee.name }}</h5>
+      </div>
+      <div class="card-body">
+
+        <form method="POST" action="/edit/{{ employee.id }}">
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="name" class="form-control"
+                     value="{{ employee.name }}" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email *</label>
+              <input type="email" name="email" class="form-control"
+                     value="{{ employee.email }}" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input type="text" name="phone" class="form-control"
+                     value="{{ employee.phone }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Department</label>
+              <select name="department" class="form-select">
+                {% for dept in ['IT','HR','Finance','Sales','Marketing','Operations'] %}
+                  <option value="{{ dept }}"
+                    {{ 'selected' if employee.department == dept }}>{{ dept }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Position</label>
+              <input type="text" name="position" class="form-control"
+                     value="{{ employee.position }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Salary (₹)</label>
+              <input type="number" name="salary" class="form-control"
+                     value="{{ employee.salary }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Hire Date</label>
+              <input type="date" name="hire_date" class="form-control"
+                     value="{{ employee.hire_date }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Status</label>
+              <select name="status" class="form-select">
+                <option value="Active"   {{ 'selected' if employee.status == 'Active' }}>Active</option>
+                <option value="Inactive" {{ 'selected' if employee.status == 'Inactive' }}>Inactive</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-warning">
+              <i class="fas fa-save me-1"></i>Update Employee
+            </button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

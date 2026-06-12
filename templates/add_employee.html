@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-success text-white">
+        <h5 class="mb-0"><i class="fas fa-user-plus me-2"></i>Add New Employee</h5>
+      </div>
+      <div class="card-body">
+
+        <form method="POST" action="/add">
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="name" class="form-control"
+                     value="{{ data.get('name','') }}" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email *</label>
+              <input type="email" name="email" class="form-control"
+                     value="{{ data.get('email','') }}" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input type="text" name="phone" class="form-control"
+                     value="{{ data.get('phone','') }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Department</label>
+              <select name="department" class="form-select">
+                <option value="">-- Select --</option>
+                {% for dept in ['IT','HR','Finance','Sales','Marketing','Operations'] %}
+                  <option value="{{ dept }}"
+                    {{ 'selected' if data.get('department') == dept }}>{{ dept }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Position</label>
+              <input type="text" name="position" class="form-control"
+                     value="{{ data.get('position','') }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Salary (₹)</label>
+              <input type="number" name="salary" class="form-control"
+                     value="{{ data.get('salary','') }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Hire Date</label>
+              <input type="date" name="hire_date" class="form-control"
+                     value="{{ data.get('hire_date','') }}">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Status</label>
+              <select name="status" class="form-select">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+
+          </div><!-- row -->
+
+          <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-save me-1"></i>Save Employee
+            </button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
